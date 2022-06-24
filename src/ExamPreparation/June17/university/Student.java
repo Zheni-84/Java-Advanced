@@ -1,4 +1,4 @@
-package university;
+package ExamPreparation.June17.university;
 
 import java.util.Objects;
 

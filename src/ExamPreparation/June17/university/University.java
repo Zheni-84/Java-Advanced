@@ -1,4 +1,4 @@
-package university;
+package ExamPreparation.June17.university;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +29,11 @@ public class University {
 	public String registerStudent(Student student) {
 		String result = null;
 		if (getStudentCount() >= getCapacity()) {
-			result = "No seats in the university";
+			result = "No seats in the ExamPreparation.June17.university";
 		}
 
 		if (getStudent(student.getFirstName(), student.getLastName()) != null) {
-			result = "Student is already in the university";
+			result = "Student is already in the ExamPreparation.June17.university";
 		}
 
 		if (result == null) {

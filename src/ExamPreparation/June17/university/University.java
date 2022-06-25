@@ -29,11 +29,11 @@ public class University {
 	public String registerStudent(Student student) {
 		String result = null;
 		if (getStudentCount() >= getCapacity()) {
-			result = "No seats in the ExamPreparation.June17.university";
+			result = "No seats in the university";
 		}
 
 		if (getStudent(student.getFirstName(), student.getLastName()) != null) {
-			result = "Student is already in the ExamPreparation.June17.university";
+			result = "Student is already in the university";
 		}
 
 		if (result == null) {

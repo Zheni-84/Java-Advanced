@@ -1,6 +1,7 @@
 package oop.interfacesAndAbstraction.telephony;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Smartphone implements Browsable, Callable {
 
@@ -27,12 +28,16 @@ public class Smartphone implements Browsable, Callable {
 
 	@Override
 	public String call() {
+		//		numbers.stream()
+		//				.map(number -> number.matches(".*\\D+.*") ? "Invalid number!" : "Calling... " + number)
+		//				.collect(Collectors.joining(System.lineSeparator()));
+
 		StringBuilder sb = new StringBuilder();
 		for (String number : numbers) {
-			if (!hasOnlyNumbers(number)) {
-				sb.append("Invalid number!").append(System.lineSeparator());
-			} else {
+			if (hasOnlyNumbers(number)) {
 				sb.append(String.format("Calling... %s!%n", number));
+			} else {
+				sb.append("Invalid number!").append(System.lineSeparator());
 			}
 		}
 		return sb.toString().trim();

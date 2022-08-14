@@ -2,14 +2,13 @@ package oop.reflection.barracksWars.data;
 
 import oop.reflection.barracksWars.interfaces.Repository;
 import oop.reflection.barracksWars.interfaces.Unit;
-import jdk.jshell.spi.ExecutionControl;
 
 import java.util.Map;
 import java.util.TreeMap;
 
 public class UnitRepository implements Repository {
 
-	private Map<String, Integer> amountOfUnits;
+	private final Map<String, Integer> amountOfUnits;
 
 	public UnitRepository() {
 		this.amountOfUnits = new TreeMap<>();
@@ -17,9 +16,7 @@ public class UnitRepository implements Repository {
 
 	public void addUnit(Unit unit) {
 		String unitType = unit.getClass().getSimpleName();
-		if (!this.amountOfUnits.containsKey(unitType)) {
-			this.amountOfUnits.put(unitType, 0);
-		}
+		this.amountOfUnits.putIfAbsent(unitType, 0);
 
 		int newAmount = this.amountOfUnits.get(unitType) + 1;
 		this.amountOfUnits.put(unitType, newAmount);
@@ -38,8 +35,14 @@ public class UnitRepository implements Repository {
 		return statBuilder.toString();
 	}
 
-	public void removeUnit(String unitType) throws ExecutionControl.NotImplementedException {
-		// TODO: implement for problem 4
-		throw new ExecutionControl.NotImplementedException("message");
+	public void removeUnit(String unitType) throws IllegalArgumentException {
+		if (this.amountOfUnits.containsKey(unitType) && this.amountOfUnits.get(unitType) != 0) {
+			final Integer newAmountOfUnits = this.amountOfUnits.get(unitType) - 1;
+
+			this.amountOfUnits.put(unitType, newAmountOfUnits);
+		} else {
+			throw new IllegalArgumentException("No such units in repository.");
+		}
+
 	}
 }

@@ -12,8 +12,7 @@ public class UnitFactoryImpl implements UnitFactory {
 	private static final String UNITS_PACKAGE_NAME = "oop.reflection.barracksWars.models.units.";
 
 	@Override
-	public Unit createUnit(String unitType) throws ExecutionControl.NotImplementedException,
-			ClassNotFoundException,
+	public Unit createUnit(String unitType) throws ClassNotFoundException,
 			InvocationTargetException,
 			NoSuchMethodException,
 			InstantiationException,
@@ -23,8 +22,7 @@ public class UnitFactoryImpl implements UnitFactory {
 		return createUnit(unitClass);
 	}
 
-	private Unit createUnit(Class<Unit> unitClass)
-			throws NoSuchMethodException,
+	private Unit createUnit(Class<Unit> unitClass) throws NoSuchMethodException,
 			InvocationTargetException,
 			InstantiationException,
 			IllegalAccessException {

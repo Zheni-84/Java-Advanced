@@ -72,6 +72,9 @@ public class Engine implements Runnable {
 			case "fight":
 				result = this.fightCommand(data);
 				break;
+			case "retire":
+				result = this.retireCommand(data);
+				break;
 			default:
 				throw new RuntimeException("Invalid command!");
 		}
@@ -96,5 +99,12 @@ public class Engine implements Runnable {
 	
 	private String fightCommand(String[] data) {
 		return "fight";
+	}
+
+	private String retireCommand(String[] data) throws IllegalArgumentException {
+		final String unitType = data[1];
+		this.repository.removeUnit(unitType);
+
+		return unitType + " retired!";
 	}
 }
